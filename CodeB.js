@@ -333,26 +333,11 @@ var iframe = document.getElementById("if1");
 // iframe内のドキュメントを取得する
 var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
 
-var Area_101 = iframeDoc.getElementById("Area_101");
-var Area_102 = iframeDoc.getElementById("Area_102");
-var Area_103 = iframeDoc.getElementById("Area_103");
-var Area_104 = iframeDoc.getElementById("Area_104");
-var Area_105 = iframeDoc.getElementById("Area_105");
-var Area_106 = iframeDoc.getElementById("Area_106");
-var Area_107 = iframeDoc.getElementById("Area_107");
-var Area_108 = iframeDoc.getElementById("Area_108");
-var Area_109 = iframeDoc.getElementById("Area_109");
-var Area_110 = iframeDoc.getElementById("Area_110");
-var Area_111 = iframeDoc.getElementById("Area_111");
-var Area_112 = iframeDoc.getElementById("Area_112");
-var Area_113 = iframeDoc.getElementById("Area_113");
-var Area_114 = iframeDoc.getElementById("Area_114");
-var Area_115 = iframeDoc.getElementById("Area_115");
-var Area_116 = iframeDoc.getElementById("Area_116");
-var Area_117 = iframeDoc.getElementById("Area_117");
-var Area_118 = iframeDoc.getElementById("Area_118");
-var Area_119 = iframeDoc.getElementById("Area_119");
-var Area_120 = iframeDoc.getElementById("Area_120");
+const areas = {};
+
+for (let i = 101; i <= 120; i++) {
+  areas[`Area_${i}`] = iframeDoc.getElementById(`Area_${i}`);
+}
 
 var Area_201 = iframeDoc.getElementById("Area_201");
 var Area_202 = iframeDoc.getElementById("Area_202");
