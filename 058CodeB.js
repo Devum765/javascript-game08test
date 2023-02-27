@@ -633,7 +633,7 @@ function Sen(HenA) {
 								if (EZOCArea[TurnJinnei][SenntakuArea01]!=0 && EZOCArea[TurnJinnei][SenntakuArea02]!=0) { alert("EZOCからEZOCへは行軍できません"); }
 								if (EZOCArea[TurnJinnei][SenntakuArea01]==0 || EZOCArea[TurnJinnei][SenntakuArea02]==0) {
 									if (BattleSystem==1 && Division[TurnJinnei][SenntakuShidann][2]==1) { alert("戦力1の部隊は移動できません"); }
-									if (BattleSystem==0 || BattleSystem==2 || Division[TurnJinnei][SenntakuShidann][2]>1) {
+									if (BattleSystem!=1 || Division[TurnJinnei][SenntakuShidann][2]>1) {
 										if (TikeiCost[AreaData[SenntakuArea02][9]]>KidouNum+1) { alert("移動力が足りません"); }
 										if (TikeiCost[AreaData[SenntakuArea02][9]]<=KidouNum+1) {
 											Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
@@ -662,7 +662,7 @@ function Sen(HenA) {
 								if (EZOCArea[TurnJinnei][SenntakuArea01]!=0 && EZOCArea[TurnJinnei][SenntakuArea02]!=0) { alert("EZOCからEZOCへは行軍できません"); }
 								if (EZOCArea[TurnJinnei][SenntakuArea01]==0 || EZOCArea[TurnJinnei][SenntakuArea02]==0) {
 									if (BattleSystem==1 && Division[TurnJinnei][SenntakuShidann][2]==1) { alert("戦力1の部隊は移動できません"); }
-									if (BattleSystem==0  || BattleSystem==2 || Division[TurnJinnei][SenntakuShidann][2]>1) {
+									if (BattleSystem!=1 || Division[TurnJinnei][SenntakuShidann][2]>1) {
 										if (TikeiCost[AreaData[SenntakuArea02][9]]>KidouNum+1) { alert("移動力が足りません"); }
 										if (TikeiCost[AreaData[SenntakuArea02][9]]<=KidouNum+1) {
 											Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
@@ -763,7 +763,7 @@ function Sen(HenA) {
 						if (Hokyuu[TurnJinnei]>=HojuMisc) {
 							Hokyuu[TurnJinnei] -= HojuMisc;
 							Division[TurnJinnei][SenntakuShidann][2] += HojuEffMisc;
-							if (BattleSystem==2) {
+							if (BattleSystem==2) {//都市補充
 								if (AreaData[Division[TurnJinnei][SenntakuShidann][4]][9]==2) {
 									Division[TurnJinnei][SenntakuShidann][2] += 1;
 								}
@@ -794,7 +794,8 @@ function Sen(HenA) {
 						HenC = 0;
 						//BattleSystem0　戦力比による北米決戦からのシステム
 						//BattleSystem1　移動ごとに部隊が損耗するシステム(強攻コマンド未設定)
-						//BattleSystem2　攻撃優位の流動的戦闘システム
+						//BattleSystem2　攻撃優位の流動的戦闘システム(戦闘消耗なし)
+						//BattleSystem3　BattleSystem0の一部修正(退却システム1対応のため)
 						if (BattleSystem!=2) {
 							if (Division[TurnJinnei][SenntakuShidann][2]>=(Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc)*2 && HenC==0) {//防衛側の2倍以上の戦力値
 								HenC=1;
@@ -804,6 +805,7 @@ function Sen(HenA) {
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][1] = 0;
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 								}
+								ShisyuDam = 4;
 							}
 							if (Division[TurnJinnei][SenntakuShidann][2]>Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側を上回る戦力値
 								HenC=1;
@@ -813,21 +815,25 @@ function Sen(HenA) {
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][1] = 0;
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 								}
+								ShisyuDam = 2;
 							}
 							if (Division[TurnJinnei][SenntakuShidann][2]*2<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側の2倍以下の戦力値
 								HenC=1;
 								Division[TurnJinnei][SenntakuShidann][2] -= 2;
 								if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2] -= 2; }
+								if (BattleSystem==3) { Division[TurnJinnei][SenntakuShidann][2] += 1; }
 								if (Division[TurnJinnei][SenntakuShidann][2]<=0) {
 									Division[TurnJinnei][SenntakuShidann][1] = 0;
 									Division[TurnJinnei][SenntakuShidann][2] = 0;
 								}
 								Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 1;
 								if (BattleSystem==1) { Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 1; }
+								if (BattleSystem==3) { Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] += 1; }
 								if (Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]<=0) {
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][1] = 0;
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 								}
+								ShisyuDam = 1;
 							}
 							if (Division[TurnJinnei][SenntakuShidann][2]<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側以下の戦力値
 								HenC=1;
@@ -843,6 +849,7 @@ function Sen(HenA) {
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][1] = 0;
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 								}
+								ShisyuDam = 1;
 							}
 						}
 						if (BattleSystem==2) {
@@ -867,6 +874,7 @@ function Sen(HenA) {
 						//退却処理
 						if (Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]>0) {
 							ComHen = 5;
+							TaikyakuSuu = MiscTaikyakuSuu;
 							SenntakuShidann = AreaData[SenntakuArea02][HenB];
 							SenntakuArea01 = Division[TekiTurnJinnei][SenntakuShidann][4];
 							Area(SenntakuArea01);
@@ -1043,6 +1051,7 @@ function Sen(HenA) {
 						//退却処理
 						if (HenC==1 && Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]>0) {
 							ComHen = 5;
+							TaikyakuSuu = MiscTaikyakuSuu;
 							SenntakuShidann = AreaData[SenntakuArea02][HenB];
 							SenntakuArea01 = Division[TekiTurnJinnei][SenntakuShidann][4];
 							Area(SenntakuArea01);
@@ -1082,27 +1091,40 @@ function Sen(HenA) {
 			break;
 			//５退却選択
 			case 5:
-				if (HenA==1) {
+				if (HenA==1) {//退却
 					Taikyaku();
 					if (AreaSetuzoku[Division[TekiTurnJinnei][SenntakuShidann][4]][SenntakuArea02]==0) { alert("隣接していない州へは退却できません"); }
 					if (AreaSetuzoku[Division[TekiTurnJinnei][SenntakuShidann][4]][SenntakuArea02]!=0) {
-						if (AreaData[SenntakuArea02][7]!=999) { alert("1つの州には5部隊までしか駐留できません"); }
-						if (AreaData[SenntakuArea02][7]==999) {
-							if (TaikyakuArea[TekiTurnJinnei][SenntakuArea02]!=0) { alert("退却できる州は、敵部隊が隣接していない州です"); }
-							if (TaikyakuArea[TekiTurnJinnei][SenntakuArea02]==0) {
-								Division[TekiTurnJinnei][SenntakuShidann][4] = SenntakuArea02;
-								AreaData[SenntakuArea02][0] = TekiTurnJinnei;
-								MapShidannData()
-								MapHyouji();
-								SenntakuShidann = 999;
-								TurnEndHen = 1;
+						if (AreaData[SenntakuArea02][9]==4) { alert("河川へは退却できません"); }
+						if (AreaData[SenntakuArea02][9]!=4) {
+							if (AreaData[SenntakuArea02][7]!=999) { alert("1つの州には5部隊までしか駐留できません"); }
+							if (AreaData[SenntakuArea02][7]==999) {
+								if (TaikyakuArea[TekiTurnJinnei][SenntakuArea02]!=0) { alert("退却できる州は、敵部隊が隣接していない州です"); }
+								if (TaikyakuArea[TekiTurnJinnei][SenntakuArea02]==0) {
+									Division[TekiTurnJinnei][SenntakuShidann][4] = SenntakuArea02;
+									AreaData[SenntakuArea02][0] = TekiTurnJinnei;
+									TaikyakuSuu--;
+									SenntakuArea01 = SenntakuArea02;
+									Area(SenntakuArea01);
+									MapShidannData()
+									MapHyouji();
+									if (TaikyakuSuu<=0) {
+										SenntakuShidann = 999;
+										TurnEndHen = 1;
+									}
+								}
 							}
 						}
 					}
 				}
-				if (HenA==2) {
-					Division[TekiTurnJinnei][SenntakuShidann][2]-=MiscShisyu;
-					//if (BattleSystem==1 || BattleSystem==2) { Division[TekiTurnJinnei][SenntakuShidann][2] -= 2; }
+				if (HenA==2) {//死守
+					if (TaikyakuSystem==0) {
+						Division[TekiTurnJinnei][SenntakuShidann][2]-=MiscShisyu;
+						//if (BattleSystem==1 || BattleSystem==2) { Division[TekiTurnJinnei][SenntakuShidann][2] -= 2; }
+					}
+					if (TaikyakuSystem==1) {
+						Division[TekiTurnJinnei][SenntakuShidann][2]-=ShisyuDam;
+					}
 					if (Division[TekiTurnJinnei][SenntakuShidann][2]<=0) {
 						Division[TekiTurnJinnei][SenntakuShidann][1] = 0;
 						Division[TekiTurnJinnei][SenntakuShidann][2] = 0;

@@ -471,11 +471,12 @@ function Scenario010() {
 	Hokyuu = new Array(0,0);//初期補給物資
 	HokyuuPlusBon = new Array(0,0);//補給ボーナス
 	DefaultMisc();
-	BattleSystem = 0;
+	BattleSystem = 3;
+	TaikyakuSystem = 1;
 	TikeiCost = new Array(2,1,99,99,2,1,3);//平地、都市、海、湿地、河川、道路、森
-	MiscShisyu = 4;//死守時の喪失戦闘力
+	DefMisc = 4;//防衛時の戦力ボーナス
+	MiscTaikyakuSuu = 2;//退却移動するへクス数
 	HojuMisc = 999;//補充に必要な補給値
-	HojuEffMisc = 0;//一度の補充で上昇する戦力値
 
 	for (HenA=1;HenA<=Tate;HenA++) {
 		for (HenB=1;HenB<=Yoko;HenB++) {
@@ -605,24 +606,23 @@ function Scenario010() {
 	Division[1][23] = new Array("歩兵師団[5]",1,8,8,4013,1,1,4);
 	AreaData[4013][0] = 1;
 
-	Division[1][24] = new Array("戦車師団[10]",2,12,12,1008,1,0,9);
-	Division[1][25] = new Array("戦車師団[10]",2,12,12,1008,1,0,9);
+	Division[1][24] = new Array("戦車師団[10]",2,20,20,1008,1,0,9);
+	Division[1][25] = new Array("騎兵師団[8]",1,6,6,1008,1,1,7);
 	//ヴィテブスク
 
 	Division[1][26] = new Array("戦車師団[10]",2,12,12,2012,1,0,9);
-	Division[1][27] = new Array("戦車師団[10]",2,12,12,2012,1,0,9);
+	Division[1][27] = new Array("騎兵師団[8]",1,6,6,2012,1,1,7);
 	//オルシャ
 
-	Division[1][26] = new Array("戦車師団[10]",2,12,12,3612,1,0,9);
-	Division[1][27] = new Array("戦車師団[10]",2,12,12,3612,1,0,9);
+	Division[1][28] = new Array("戦車師団[10]",2,12,12,3612,1,0,9);
+	Division[1][29] = new Array("騎兵師団[8]",1,6,6,3612,1,1,7);
 	//モルディブ
 
-	Division[1][28] = new Array("戦車師団[10]",2,12,12,2718,1,0,9);
-	Division[1][29] = new Array("戦車師団[10]",2,12,12,2718,1,0,9);
+	Division[1][30] = new Array("戦車師団[10]",2,12,12,2718,1,0,9);
+	Division[1][31] = new Array("騎兵師団[8]",1,6,6,2718,1,1,7);
 	//ホリキ
 
-	Division[1][30] = new Array("騎兵師団[8]",1,6,6,3828,1,1,7);
-	Division[1][31] = new Array("騎兵師団[8]",1,6,6,3828,1,1,7);
+	Division[1][32] = new Array("騎兵師団[8]",1,6,6,3828,1,1,7);
 	AreaData[3828][0] = 1;
 
 
