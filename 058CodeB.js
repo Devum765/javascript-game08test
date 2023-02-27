@@ -439,7 +439,7 @@ window.MapHyouji = function() {
 	}
 }
 window.CommandSelect = function() {//4部隊の中から1部隊を選択するverのコードを改変して使用しているため、不要なコードが多々存在する
-	Alert("A");
+	alert("nnn");
 	ShireibuKeisann();
 	//全優先値を計算
 	CommandSousuu = 0;
