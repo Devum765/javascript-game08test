@@ -16,7 +16,7 @@ function DefaultMisc() {//新システムを導入する→DefMiscに新たなMi
 DefaultMisc();
 
 Game = 0;
-AreaIdCheck = 1;
+AreaIdCheck = 0;
 
 Tate = 40;
 Yoko = 45;
