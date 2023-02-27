@@ -13,6 +13,7 @@ function Scenario003() {
 	TekiTurnJinnei = 1;
 	Hokyuu = new Array(0,0);//初期補給物資
 	HokyuuPlusBon = new Array(0,0);//補給ボーナス
+	DefaultMisc();
 	HojuMisc = 0;//補充に必要な補給値
 	HojuEffMisc = 0;//一度の補充で上昇する戦力値
 	BattleSystem = 2;

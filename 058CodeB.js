@@ -2,72 +2,78 @@
 
 <!--【マップ接続】-->
 
-AreaSetuzoku = new Array();
+function AreaSetuzokuSettei() {
 
-for (HenA=1;HenA<=Tate;HenA++) {
-	for (HenB=1;HenB<=Yoko;HenB++) {
-		AreaSetuzoku[HenA*100+HenB] = new Array();
-		for (HenC=1;HenC<=Tate;HenC++) {
-			for (HenD=1;HenD<=Yoko;HenD++) {
-				AreaSetuzoku[HenA*100+HenB][HenC*100+HenD] = 0;
+	AreaSetuzoku = new Array();
+
+	for (HenA=1;HenA<=Tate;HenA++) {
+		for (HenB=1;HenB<=Yoko;HenB++) {
+			AreaSetuzoku[HenA*100+HenB] = new Array();
+			for (HenC=1;HenC<=Tate;HenC++) {
+				for (HenD=1;HenD<=Yoko;HenD++) {
+					AreaSetuzoku[HenA*100+HenB][HenC*100+HenD] = 0;
+				}
 			}
 		}
 	}
-}
 
-for (HenA=1;HenA<=Tate;HenA++) {
-	for (HenB=1;HenB<=Yoko;HenB++) {
-		if (HenB%2==0) {
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+ 99] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+101] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 1;
-		}
-		if (HenB%2==1) {
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-101] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 1;
-			AreaSetuzoku[HenA*100+HenB][HenA*100+HenB- 99] = 1;
-		}
-	}
-}
-
-for (HenA=1;HenA<=Tate;HenA++) {
-	for (HenB=1;HenB<=Yoko;HenB++) {
-		if (AreaData[HenA*100+HenB][9]==1 || AreaData[HenA*100+HenB][9]==3) {//海・湿地
+	for (HenA=1;HenA<=Tate;HenA++) {
+		for (HenB=1;HenB<=Yoko;HenB++) {
 			if (HenB%2==0) {
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+ 99] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+101] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 0;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+ 99] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+101] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 1;
 			}
 			if (HenB%2==1) {
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-101] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 0;
-				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB- 99] = 0;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-101] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 1;
+				AreaSetuzoku[HenA*100+HenB][HenA*100+HenB- 99] = 1;
 			}
 		}
 	}
+
+	for (HenA=1;HenA<=Tate;HenA++) {
+		for (HenB=1;HenB<=Yoko;HenB++) {
+			if (AreaData[HenA*100+HenB][9]==1 || AreaData[HenA*100+HenB][9]==3 || AreaData[HenA*100+HenB][9]==99) {//海・湿地・マップ外
+				if (HenB%2==0) {
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+ 99] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+101] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 0;
+				}
+				if (HenB%2==1) {
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-100] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-101] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB-  1] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+100] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB+  1] = 0;
+					AreaSetuzoku[HenA*100+HenB][HenA*100+HenB- 99] = 0;
+				}
+			}
+		}
+	}
+
+	for (HenA=1;HenA<=Tate;HenA++) {
+		for (HenB=1;HenB<=Yoko;HenB++) {
+			for (HenC=1;HenC<=Tate;HenC++) {
+				for (HenD=1;HenD<=Yoko;HenD++) {
+					if (AreaSetuzoku[HenA*100+HenB][HenC*100+HenD]==0) { AreaSetuzoku[HenC*100+HenD][HenA*100+HenB] = 0; }
+				}
+			}
+		}
+	}
+
 }
 
-for (HenA=1;HenA<=Tate;HenA++) {
-	for (HenB=1;HenB<=Yoko;HenB++) {
-		for (HenC=1;HenC<=Tate;HenC++) {
-			for (HenD=1;HenD<=Yoko;HenD++) {
-				if (AreaSetuzoku[HenA*100+HenB][HenC*100+HenD]==0) { AreaSetuzoku[HenC*100+HenD][HenA*100+HenB] = 0; }
-			}
-		}
-	}
-}
+AreaSetuzokuSettei();
 
 <!--【エリア選択】-->
 
@@ -435,9 +441,12 @@ window.MapHyouji = function() {
 					}
 				}
 			}
+			//マップ外
+			if (AreaData[HenA][9]==99) { iframeDoc.getElementById("Area_"+[HenA]).src="MapSoto.png"; }
 		}
 	}
 }
+
 window.CommandSelect = function() {//4部隊の中から1部隊を選択するverのコードを改変して使用しているため、不要なコードが多々存在する
 	ShireibuKeisann();
 	//全優先値を計算
@@ -625,19 +634,22 @@ function Sen(HenA) {
 								if (EZOCArea[TurnJinnei][SenntakuArea01]==0 || EZOCArea[TurnJinnei][SenntakuArea02]==0) {
 									if (BattleSystem==1 && Division[TurnJinnei][SenntakuShidann][2]==1) { alert("戦力1の部隊は移動できません"); }
 									if (BattleSystem==0 || BattleSystem==2 || Division[TurnJinnei][SenntakuShidann][2]>1) {
-										Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
-										if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
-										if (KidouNum==0) {
-											TurnEndHen = 1;
+										if (TikeiCost[AreaData[SenntakuArea02][9]]>KidouNum+1) { alert("移動力が足りません"); }
+										if (TikeiCost[AreaData[SenntakuArea02][9]]<=KidouNum+1) {
+											Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
+											if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
+											KidouNum-=TikeiCost[AreaData[SenntakuArea02][9]];
+											if (KidouNum<0 || AreaData[SenntakuArea02][9]==4) {
+												TurnEndHen = 1;
+											}
+											if (KidouNum>=0 && AreaData[SenntakuArea02][9]!=4) {
+												SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
+												SenntakushiName[5] = "Ｅ：行動終了";
+												document.For02.B05.value=SenntakushiName[5];
+											}
+											MapShidannData();
+											MapHyouji();
 										}
-										if (KidouNum>=1) {
-											KidouNum--;
-											SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
-											SenntakushiName[5] = "Ｅ：行動終了";
-											document.For02.B05.value=SenntakushiName[5];
-										}
-										MapShidannData();
-										MapHyouji();
 									}
 								}
 							}
@@ -651,20 +663,23 @@ function Sen(HenA) {
 								if (EZOCArea[TurnJinnei][SenntakuArea01]==0 || EZOCArea[TurnJinnei][SenntakuArea02]==0) {
 									if (BattleSystem==1 && Division[TurnJinnei][SenntakuShidann][2]==1) { alert("戦力1の部隊は移動できません"); }
 									if (BattleSystem==0  || BattleSystem==2 || Division[TurnJinnei][SenntakuShidann][2]>1) {
-										Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
-										AreaData[SenntakuArea02][0] = TurnJinnei;
-										if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
-										if (KidouNum==0) {
-											TurnEndHen = 1;
+										if (TikeiCost[AreaData[SenntakuArea02][9]]>KidouNum+1) { alert("移動力が足りません"); }
+										if (TikeiCost[AreaData[SenntakuArea02][9]]<=KidouNum+1) {
+											Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
+											AreaData[SenntakuArea02][0] = TurnJinnei;
+											if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
+											KidouNum-=TikeiCost[AreaData[SenntakuArea02][9]];
+											if (KidouNum<0 || AreaData[SenntakuArea02][9]==4) {
+												TurnEndHen = 1;
+											}
+											if (KidouNum>=0 && AreaData[SenntakuArea02][9]!=4) {
+												SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
+												SenntakushiName[5] = "Ｅ：行動終了";
+												document.For02.B05.value=SenntakushiName[5];
+											}
+											MapShidannData();
+											MapHyouji();
 										}
-										if (KidouNum>=1) {
-											KidouNum--;
-											SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
-											SenntakushiName[5] = "Ｅ：行動終了";
-											document.For02.B05.value=SenntakushiName[5];
-										}
-										MapShidannData();
-										MapHyouji();
 									}
 								}
 							}

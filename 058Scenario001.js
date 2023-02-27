@@ -1,6 +1,79 @@
 
 function Tikei1941() {
 
+	//地形リセット
+	for (HenA=1;HenA<=Tate;HenA++) {
+		for (HenB=1;HenB<=Yoko;HenB++) {
+			AreaData[HenA*100+HenB][9] = 0;
+		}
+	}
+
+	//0平地、1海、2都市
+
+	//バルト海
+	AreaData[ 101][9] = 1;
+	AreaData[ 201][9] = 1;
+	AreaData[ 301][9] = 1;
+	AreaData[ 401][9] = 1;
+	AreaData[ 501][9] = 1;
+	AreaData[ 601][9] = 1;
+	AreaData[ 701][9] = 1;
+	AreaData[ 102][9] = 1;
+	AreaData[ 202][9] = 1;
+	AreaData[ 302][9] = 1;
+	AreaData[ 103][9] = 1;
+	AreaData[ 103][9] = 1;
+	AreaData[ 203][9] = 1;
+	AreaData[ 303][9] = 1;
+	AreaData[ 403][9] = 1;
+	AreaData[ 104][9] = 1;
+	AreaData[ 105][9] = 1;
+	AreaData[ 106][9] = 1;
+	AreaData[ 107][9] = 1;
+	AreaData[ 307][9] = 1;
+	AreaData[ 108][9] = 1;
+	AreaData[ 110][9] = 1;
+
+	//黒海
+	AreaData[2006][9] = 1;
+	AreaData[2007][9] = 1;
+	AreaData[1907][9] = 1;
+	AreaData[1807][9] = 1;
+	AreaData[2008][9] = 1;
+	AreaData[1908][9] = 1;
+	AreaData[1808][9] = 1;
+	AreaData[1708][9] = 1;
+	AreaData[2009][9] = 1;
+	AreaData[1909][9] = 1;
+	AreaData[1809][9] = 1;
+	AreaData[2010][9] = 1;
+	AreaData[1910][9] = 1;
+	AreaData[1710][9] = 1;
+	AreaData[2011][9] = 1;
+	AreaData[2012][9] = 1;
+	AreaData[1912][9] = 1;
+	AreaData[1712][9] = 1;
+	AreaData[2013][9] = 1;
+	AreaData[1813][9] = 1;
+	AreaData[1713][9] = 1;
+	AreaData[2014][9] = 1;
+	AreaData[1714][9] = 1;
+	AreaData[1614][9] = 1;
+
+	//プリチャク湿地
+	AreaData[1105][9] = 3;
+	AreaData[1006][9] = 3;
+	AreaData[1107][9] = 3;
+	AreaData[1207][9] = 3;
+
+	for (HenA=1;HenA<=Tate;HenA++) {
+		for (HenB=1;HenB<=Yoko;HenB++) {
+			if (HenA>20 || HenB>20) {
+				AreaData[HenA*100+HenB][9] =99;
+			}
+		}
+	}
+
 	AreaName = new Array();
 
 	for (HenA=1;HenA<=Tate;HenA++) {
@@ -13,6 +86,9 @@ function Tikei1941() {
 			}
 			if (AreaData[HenA*100+HenB][9]==3) {
 				AreaName[HenA*100+HenB] = "湿地(進入不可)";
+			}
+			if (AreaData[HenA*100+HenB][9]==99) {
+				AreaName[HenA*100+HenB] = "マップ外";
 			}
 		}
 	}
@@ -54,6 +130,7 @@ function Scenario001() {
 	TekiTurnJinnei = 1;
 	Hokyuu = new Array(0,0);//初期補給物資
 	HokyuuPlusBon = new Array(0,0);//補給ボーナス
+	DefaultMisc();
 	BattleSystem = 0;
 	MiscShisyu = 2;//死守時の喪失戦闘力
 	HojuMisc = 20;//補充に必要な補給値

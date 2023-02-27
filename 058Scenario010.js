@@ -1,6 +1,7 @@
 
 function TikeiSmo() {
 
+	//地形リセット
 	for (HenA=1;HenA<=Tate;HenA++) {
 		for (HenB=1;HenB<=Yoko;HenB++) {
 			AreaData[HenA*100+HenB][9] = 0;
@@ -463,16 +464,18 @@ function Scenario010() {
 
 	ScenarioNum = 10;
 
-	Initiative01 = 2;
+	Initiative01 = 1;
 	Initiative02 = 1;
 	TurnJinnei = 0;
 	TekiTurnJinnei = 1;
 	Hokyuu = new Array(0,0);//初期補給物資
 	HokyuuPlusBon = new Array(0,0);//補給ボーナス
+	DefaultMisc();
 	BattleSystem = 0;
-	MiscShisyu = 2;//死守時の喪失戦闘力
-	HojuMisc = 20;//補充に必要な補給値
-	HojuEffMisc = 3;//一度の補充で上昇する戦力値
+	TikeiCost = new Array(2,1,99,99,2,1,3);//平地、都市、海、湿地、河川、道路、森
+	MiscShisyu = 4;//死守時の喪失戦闘力
+	HojuMisc = 999;//補充に必要な補給値
+	HojuEffMisc = 0;//一度の補充で上昇する戦力値
 
 	for (HenA=1;HenA<=Tate;HenA++) {
 		for (HenB=1;HenB<=Yoko;HenB++) {

@@ -32,6 +32,7 @@ function For05Sel00() {
 		CommandSelect();
 		SennryokuKeisann();
 		MapHyouji();
+		AreaSetuzokuSettei();
 	}
 	if (Turn!=1) {
 		switch (ScenarioNum) {
@@ -50,8 +51,6 @@ function For05Sel00() {
 		}
 	}
 }
-
-//独ソ戦マップの地形指定はココに存在した(ガバガバじゃねーかｗ)、統合時に注意
 
 Scenario001();
 AreaIdHyouji();
