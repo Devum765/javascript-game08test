@@ -473,9 +473,11 @@ function Scenario010() {
 	DefaultMisc();
 	BattleSystem = 3;
 	TaikyakuSystem = 1;
-	TikeiCost = new Array(2,1,99,99,2,1,3);//平地、都市、海、湿地、河川、道路、森
+	TikeiCost = new Array(2,1,99,99,2,1,3);//平地、海、都市、湿地、河川、道路、森
+	TikeiBougyo = new Array(4,99,8,99,-4,4,6);
 	DefMisc = 4;//防衛時の戦力ボーナス
 	MiscTaikyakuSuu = 2;//退却移動するへクス数
+	KyoukouKinou = 1;//強攻
 	HojuMisc = 999;//補充に必要な補給値
 
 	for (HenA=1;HenA<=Tate;HenA++) {
@@ -527,23 +529,23 @@ function Scenario010() {
 	}
 
 	//ドイツ軍
-	Division[0][ 0] = new Array("自動車化師団[10]",2,18,18,1301,1,0,9);
-	Division[0][ 1] = new Array("自動車化師団[10]",2,18,18,1301,1,0,9);
+	Division[0][ 0] = new Array("歩兵師団[6]",1,12,12,1301,1,0,5);
+	Division[0][ 1] = new Array("歩兵師団[6]",1,12,12,1301,1,0,5);
 
 	Division[0][ 2] = new Array("歩兵師団[6]",1,12,12,1404,1,1,5);
 	Division[0][ 3] = new Array("歩兵師団[6]",1,12,12,1404,1,1,5);
 
-	Division[0][ 4] = new Array("装甲師団[16]",2,24,24,1607,1,0,15);
-	Division[0][ 5] = new Array("装甲師団[16]",2,24,24,1607,1,0,15);
+	Division[0][ 4] = new Array("装甲師団[16]",2,20,20,1607,1,0,15);
+	Division[0][ 5] = new Array("装甲師団[16]",2,20,20,1607,1,0,15);
 
-	Division[0][ 6] = new Array("自動車化師団[10]",2,18,18,2008,1,0,9);
-	Division[0][ 7] = new Array("自動車化師団[10]",2,18,18,2008,1,0,9);
+	Division[0][ 6] = new Array("自動車化師団[10]",2,14,14,2008,1,0,9);
+	Division[0][ 7] = new Array("自動車化師団[10]",2,14,14,2008,1,0,9);
 
 	Division[0][ 8] = new Array("歩兵師団[6]",1,12,12,2208,1,1,5);
 	Division[0][ 9] = new Array("歩兵師団[6]",1,12,12,2208,1,1,5);
 
-	Division[0][10] = new Array("自動車化師団[10]",2,18,18,2509,1,0,9);
-	Division[0][11] = new Array("自動車化師団[10]",2,18,18,2509,1,0,9);
+	Division[0][10] = new Array("自動車化師団[10]",2,14,14,2509,1,0,9);
+	Division[0][11] = new Array("自動車化師団[10]",2,14,14,2509,1,0,9);
 
 	Division[0][12] = new Array("歩兵師団[6]",1,12,12,2809,1,1,5);
 	Division[0][13] = new Array("歩兵師団[6]",1,12,12,2809,1,1,5);
@@ -551,59 +553,59 @@ function Scenario010() {
 	Division[0][14] = new Array("歩兵師団[6]",1,12,12,3009,1,1,5);
 	Division[0][15] = new Array("歩兵師団[6]",1,12,12,3009,1,1,5);
 
-	Division[0][16] = new Array("自動車化師団[10]",2,18,18,3409,1,0,9);
-	Division[0][17] = new Array("自動車化師団[10]",2,18,18,3409,1,0,9);
+	Division[0][16] = new Array("自動車化師団[10]",2,14,14,3409,1,0,9);
+	Division[0][17] = new Array("自動車化師団[10]",2,14,14,3409,1,0,9);
 
 	Division[0][18] = new Array("歩兵師団[6]",1,12,12,3709,1,1,5);
 	Division[0][19] = new Array("歩兵師団[6]",1,12,12,3709,1,1,5);
 
 	//ソ連軍
-	Division[1][ 0] = new Array("歩兵師団[5]",1,8,8,1103,1,1,4);
-	Division[1][ 1] = new Array("歩兵師団[5]",1,8,8,1103,1,1,4);
+	Division[1][ 0] = new Array("歩兵師団[5]",1,10,10,1103,1,1,4);
+	//Division[1][ 1] = new Array("歩兵師団[5]",1,10,10,1103,1,1,4);
 	AreaData[1103][0] = 1;
 
-	Division[1][ 2] = new Array("歩兵師団[5]",1,8,8,1207,1,1,4);
-	Division[1][ 3] = new Array("歩兵師団[5]",1,8,8,1207,1,1,4);
+	Division[1][ 2] = new Array("歩兵師団[5]",1,10,10,1207,1,1,4);
+	Division[1][ 3] = new Array("歩兵師団[5]",1,10,10,1207,1,1,4);
 	AreaData[1207][0] = 1;
 
-	Division[1][ 4] = new Array("歩兵師団[5]",1,8,8,1308,1,1,4);
-	Division[1][ 5] = new Array("歩兵師団[5]",1,8,8,1308,1,1,4);
+	Division[1][ 4] = new Array("歩兵師団[5]",1,10,10,1308,1,1,4);
+	Division[1][ 5] = new Array("歩兵師団[5]",1,10,10,1308,1,1,4);
 	AreaData[1308][0] = 1;
 
-	Division[1][ 6] = new Array("歩兵師団[5]",1,8,8,1609,1,1,4);
-	Division[1][ 7] = new Array("歩兵師団[5]",1,8,8,1609,1,1,4);
+	Division[1][ 6] = new Array("歩兵師団[5]",1,10,10,1609,1,1,4);
+	Division[1][ 7] = new Array("歩兵師団[5]",1,10,10,1609,1,1,4);
 	AreaData[1609][0] = 1;
 
-	Division[1][ 8] = new Array("歩兵師団[5]",1,8,8,1810,1,1,4);
-	Division[1][ 9] = new Array("歩兵師団[5]",1,8,8,1810,1,1,4);
+	Division[1][ 8] = new Array("歩兵師団[5]",1,10,10,1810,1,1,4);
+	Division[1][ 9] = new Array("歩兵師団[5]",1,10,10,1810,1,1,4);
 	AreaData[1810][0] = 1;
 
-	Division[1][10] = new Array("歩兵師団[5]",1,8,8,2110,1,1,4);
-	Division[1][11] = new Array("歩兵師団[5]",1,8,8,2110,1,1,4);
+	Division[1][10] = new Array("歩兵師団[5]",1,10,10,2110,1,1,4);
+	Division[1][11] = new Array("歩兵師団[5]",1,10,10,2110,1,1,4);
 	AreaData[2110][0] = 1;
 
-	Division[1][12] = new Array("歩兵師団[5]",1,8,8,2411,1,1,4);
-	Division[1][13] = new Array("歩兵師団[5]",1,8,8,2411,1,1,4);
+	Division[1][12] = new Array("歩兵師団[5]",1,10,10,2411,1,1,4);
+	Division[1][13] = new Array("歩兵師団[5]",1,10,10,2411,1,1,4);
 	AreaData[2411][0] = 1;
 
-	Division[1][14] = new Array("歩兵師団[5]",1,8,8,2713,1,1,4);
-	Division[1][15] = new Array("歩兵師団[5]",1,8,8,2713,1,1,4);
+	Division[1][14] = new Array("歩兵師団[5]",1,10,10,2713,1,1,4);
+	//Division[1][15] = new Array("歩兵師団[5]",1,10,10,2713,1,1,4);
 	AreaData[2713][0] = 1;
 
-	Division[1][16] = new Array("歩兵師団[5]",1,8,8,3012,1,1,4);
-	Division[1][17] = new Array("歩兵師団[5]",1,8,8,3012,1,1,4);
+	Division[1][16] = new Array("歩兵師団[5]",1,10,10,3012,1,1,4);
+	Division[1][17] = new Array("歩兵師団[5]",1,10,10,3012,1,1,4);
 	AreaData[3012][0] = 1;
 
-	Division[1][18] = new Array("歩兵師団[5]",1,8,8,3314,1,1,4);
-	Division[1][19] = new Array("歩兵師団[5]",1,8,8,3314,1,1,4);
+	Division[1][18] = new Array("歩兵師団[5]",1,10,10,3314,1,1,4);
+	//Division[1][19] = new Array("歩兵師団[5]",1,10,10,3314,1,1,4);
 	AreaData[3314][0] = 1;
 
-	Division[1][20] = new Array("歩兵師団[5]",1,8,8,3612,1,1,4);
-	Division[1][21] = new Array("歩兵師団[5]",1,8,8,3612,1,1,4);
+	Division[1][20] = new Array("歩兵師団[5]",1,10,10,3612,1,1,4);
+	Division[1][21] = new Array("歩兵師団[5]",1,10,10,3612,1,1,4);
 	AreaData[3612][0] = 1;
 
-	Division[1][22] = new Array("歩兵師団[5]",1,8,8,4013,1,1,4);
-	Division[1][23] = new Array("歩兵師団[5]",1,8,8,4013,1,1,4);
+	Division[1][22] = new Array("歩兵師団[5]",1,10,10,4013,1,1,4);
+	//Division[1][23] = new Array("歩兵師団[5]",1,10,10,4013,1,1,4);
 	AreaData[4013][0] = 1;
 
 	Division[1][24] = new Array("戦車師団[10]",2,20,20,1008,1,0,9);

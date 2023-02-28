@@ -636,19 +636,22 @@ function Sen(HenA) {
 									if (BattleSystem!=1 || Division[TurnJinnei][SenntakuShidann][2]>1) {
 										if (TikeiCost[AreaData[SenntakuArea02][9]]>KidouNum+1) { alert("移動力が足りません"); }
 										if (TikeiCost[AreaData[SenntakuArea02][9]]<=KidouNum+1) {
-											Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
-											if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
-											KidouNum-=TikeiCost[AreaData[SenntakuArea02][9]];
-											if (KidouNum<0 || AreaData[SenntakuArea02][9]==4) {
-												TurnEndHen = 1;
+											if (AreaData[SenntakuArea02][9]==4 && Division[TurnJinnei][SenntakuShidann][1]==2) { alert("機械化部隊は河川へ進入できません"); }
+											if (AreaData[SenntakuArea02][9]!=4 || Division[TurnJinnei][SenntakuShidann][1]!=2) {
+												Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
+												if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
+												KidouNum-=TikeiCost[AreaData[SenntakuArea02][9]];
+												if (KidouNum<0 || AreaData[SenntakuArea02][9]==4) {
+													TurnEndHen = 1;
+												}
+												if (KidouNum>=0 && AreaData[SenntakuArea02][9]!=4) {
+													SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
+													SenntakushiName[5] = "Ｅ：行動終了";
+													document.For02.B05.value=SenntakushiName[5];
+												}
+												MapShidannData();
+												MapHyouji();
 											}
-											if (KidouNum>=0 && AreaData[SenntakuArea02][9]!=4) {
-												SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
-												SenntakushiName[5] = "Ｅ：行動終了";
-												document.For02.B05.value=SenntakushiName[5];
-											}
-											MapShidannData();
-											MapHyouji();
 										}
 									}
 								}
@@ -665,20 +668,23 @@ function Sen(HenA) {
 									if (BattleSystem!=1 || Division[TurnJinnei][SenntakuShidann][2]>1) {
 										if (TikeiCost[AreaData[SenntakuArea02][9]]>KidouNum+1) { alert("移動力が足りません"); }
 										if (TikeiCost[AreaData[SenntakuArea02][9]]<=KidouNum+1) {
-											Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
-											AreaData[SenntakuArea02][0] = TurnJinnei;
-											if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
-											KidouNum-=TikeiCost[AreaData[SenntakuArea02][9]];
-											if (KidouNum<0 || AreaData[SenntakuArea02][9]==4) {
-												TurnEndHen = 1;
+											if (AreaData[SenntakuArea02][9]==4 && Division[TurnJinnei][SenntakuShidann][1]==2) { alert("機械化部隊は河川へ進入できません"); }
+											if (AreaData[SenntakuArea02][9]!=4 || Division[TurnJinnei][SenntakuShidann][1]!=2) {
+												Division[TurnJinnei][SenntakuShidann][4] = SenntakuArea02;
+												AreaData[SenntakuArea02][0] = TurnJinnei;
+												if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2]--; }
+												KidouNum-=TikeiCost[AreaData[SenntakuArea02][9]];
+												if (KidouNum<0 || AreaData[SenntakuArea02][9]==4) {
+													TurnEndHen = 1;
+												}
+												if (KidouNum>=0 && AreaData[SenntakuArea02][9]!=4) {
+													SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
+													SenntakushiName[5] = "Ｅ：行動終了";
+													document.For02.B05.value=SenntakushiName[5];
+												}
+												MapShidannData();
+												MapHyouji();
 											}
-											if (KidouNum>=0 && AreaData[SenntakuArea02][9]!=4) {
-												SenntakuArea01 = Division[TurnJinnei][SenntakuShidann][4];
-												SenntakushiName[5] = "Ｅ：行動終了";
-												document.For02.B05.value=SenntakushiName[5];
-											}
-											MapShidannData();
-											MapHyouji();
 										}
 									}
 								}
@@ -797,7 +803,7 @@ function Sen(HenA) {
 						//BattleSystem2　攻撃優位の流動的戦闘システム(戦闘消耗なし)
 						//BattleSystem3　BattleSystem0の一部修正(退却システム1対応のため)
 						if (BattleSystem!=2) {
-							if (Division[TurnJinnei][SenntakuShidann][2]>=(Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc)*2 && HenC==0) {//防衛側の2倍以上の戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]>=(Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]])*2 && HenC==0) {//防衛側の2倍以上の戦力値
 								HenC=1;
 								Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 2;
 								if (BattleSystem==1) { Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 2; }
@@ -807,7 +813,7 @@ function Sen(HenA) {
 								}
 								ShisyuDam = 4;
 							}
-							if (Division[TurnJinnei][SenntakuShidann][2]>Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側を上回る戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]>Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]] && HenC==0) {//防衛側を上回る戦力値
 								HenC=1;
 								Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 1;
 								if (BattleSystem==1) { Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 1; }
@@ -817,7 +823,7 @@ function Sen(HenA) {
 								}
 								ShisyuDam = 2;
 							}
-							if (Division[TurnJinnei][SenntakuShidann][2]*2<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側の2倍以下の戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]*2<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]] && HenC==0) {//防衛側の2倍以下の戦力値
 								HenC=1;
 								Division[TurnJinnei][SenntakuShidann][2] -= 2;
 								if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2] -= 2; }
@@ -835,7 +841,7 @@ function Sen(HenA) {
 								}
 								ShisyuDam = 1;
 							}
-							if (Division[TurnJinnei][SenntakuShidann][2]<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側以下の戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]] && HenC==0) {//防衛側以下の戦力値
 								HenC=1;
 								Division[TurnJinnei][SenntakuShidann][2] -= 1;
 								if (BattleSystem==1) { Division[TurnJinnei][SenntakuShidann][2] -= 1; }
@@ -958,7 +964,7 @@ function Sen(HenA) {
 						HenC = 0;
 						HenD = 0;
 						if (BattleSystem!=2) {
-							if (Division[TurnJinnei][SenntakuShidann][2]>=(Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc)*2 && HenC==0) {//防衛側の2倍の戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]>=(Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]])*2 && HenC==0) {//防衛側の2倍の戦力値
 								HenC=1;
 								Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 3;
 								if (Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]<=0) {
@@ -966,12 +972,14 @@ function Sen(HenA) {
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 								}
 								Division[TurnJinnei][SenntakuShidann][2] -= 2;
+								if (BattleSystem==3) { Division[TurnJinnei][SenntakuShidann][2] += 1; }
 								if (Division[TurnJinnei][SenntakuShidann][2]<=0) {
 									Division[TurnJinnei][SenntakuShidann][1] = 0;
 									Division[TurnJinnei][SenntakuShidann][2] = 0;
 								}
+								ShisyuDam = 4;
 							}
-							if (Division[TurnJinnei][SenntakuShidann][2]>Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側を上回る戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]>Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]] && HenC==0) {//防衛側を上回る戦力値
 								HenC=1;
 								Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 2;
 								if (Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]<=0) {
@@ -979,31 +987,36 @@ function Sen(HenA) {
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 								}
 								Division[TurnJinnei][SenntakuShidann][2] -= 2;
+								if (BattleSystem==3) { Division[TurnJinnei][SenntakuShidann][2] += 1; }
 								if (Division[TurnJinnei][SenntakuShidann][2]<=0) {
 									Division[TurnJinnei][SenntakuShidann][1] = 0;
 									Division[TurnJinnei][SenntakuShidann][2] = 0;
 								}
+								ShisyuDam = 2;
 							}
-							if (Division[TurnJinnei][SenntakuShidann][2]*2<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0) {//防衛側の2倍を下回る戦力値
-								if (Division[TurnJinnei][SenntakuShidann][2]<4) {
+							if (Division[TurnJinnei][SenntakuShidann][2]*2<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]] && HenC==0) {//防衛側の2倍を下回る戦力値
+								if ((Division[TurnJinnei][SenntakuShidann][2]<4 && BattleSystem==0) || (Division[TurnJinnei][SenntakuShidann][2]<3 && BattleSystem==3)) {
 									alert("戦力値が低すぎるため、この部隊には強攻ができません");
 									HenD = 1;
 								}
-								if (Division[TurnJinnei][SenntakuShidann][2]>=4) {
+								if ((Division[TurnJinnei][SenntakuShidann][2]>=4 && BattleSystem==0) || (Division[TurnJinnei][SenntakuShidann][2]>=3 && BattleSystem==3)) {
 									HenC=1;
 									Division[TurnJinnei][SenntakuShidann][2] -= 4;
+									if (BattleSystem==3) { Division[TurnJinnei][SenntakuShidann][2] += 1; }
 									if (Division[TurnJinnei][SenntakuShidann][2]<=0) {
 										Division[TurnJinnei][SenntakuShidann][1] = 0;
 										Division[TurnJinnei][SenntakuShidann][2] = 0;
 									}
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 2;
+									if (BattleSystem==3) { Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] += 1; }
 									if (Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]<=0) {
 										Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][1] = 0;
 										Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 									}
+									ShisyuDam = 2;
 								}
 							}
-							if (Division[TurnJinnei][SenntakuShidann][2]<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+DefMisc && HenC==0 && HenD==0) {//防衛側を下回る戦力値
+							if (Division[TurnJinnei][SenntakuShidann][2]<=Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]+TikeiBougyo[AreaData[SenntakuArea02][9]] && HenC==0 && HenD==0) {//防衛側を下回る戦力値
 								if (Division[TurnJinnei][SenntakuShidann][2]<3) { alert("戦力値が低すぎるため、この部隊には強攻ができません"); }
 								if (Division[TurnJinnei][SenntakuShidann][2]>=3) {
 									HenC=1;
@@ -1013,10 +1026,12 @@ function Sen(HenA) {
 										Division[TurnJinnei][SenntakuShidann][2] = 0;
 									}
 									Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] -= 2;
+									if (BattleSystem==3) { Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] += 1; }
 									if (Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2]<=0) {
 										Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][1] = 0;
 										Division[TekiTurnJinnei][AreaData[SenntakuArea02][HenB]][2] = 0;
 									}
+									ShisyuDam = 2;
 								}
 							}
 						}
