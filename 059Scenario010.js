@@ -473,6 +473,7 @@ function Scenario010() {
 	DefaultMisc();
 	BattleSystem = 4;
 	TaikyakuSystem = 0;
+	MiscShisyu = 1;
 	TikeiCost = new Array(2,99,1,99,2,1,3);//平地、海、都市、湿地、河川、道路、森
 	TikeiBougyo = new Array(0,99,2,99,-1,0,1);
 	DefMisc = 0;//防衛時の戦力ボーナス
