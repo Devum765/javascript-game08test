@@ -473,7 +473,7 @@ function Scenario010() {
 	DefaultMisc();
 	BattleSystem = 3;
 	TaikyakuSystem = 1;
-	TikeiCost = new Array(2,1,99,99,2,1,3);//平地、海、都市、湿地、河川、道路、森
+	TikeiCost = new Array(2,99,1,99,2,1,3);//平地、海、都市、湿地、河川、道路、森
 	TikeiBougyo = new Array(4,99,8,99,-4,4,6);
 	DefMisc = 4;//防衛時の戦力ボーナス
 	MiscTaikyakuSuu = 2;//退却移動するへクス数
