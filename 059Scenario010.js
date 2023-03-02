@@ -120,7 +120,7 @@ function TikeiSmo() {
 	AreaData[2515][9] = 5;
 	AreaData[2516][9] = 5;
 	AreaData[2617][9] = 5;
-	AreaData[2717][9] = 5;
+	//AreaData[2717][9] = 5;
 	AreaData[2819][9] = 5;
 	AreaData[2919][9] = 5;
 	AreaData[2920][9] = 5;
@@ -266,9 +266,27 @@ function TikeiSmo() {
 
 	AreaData[3013][9] = 2;
 	AreaName[3013] = "シクロウ";
-	//AreaData[2915][9] = 5;//参考にした地図には小道として存在する
+	AreaData[2914][9] = 5;
+	AreaData[2915][9] = 5;
+	AreaData[2816][9] = 5;
+	AreaData[2817][9] = 5;
 	AreaData[2718][9] = 2;
 	AreaName[2718] = "ホリキ";
+	AreaData[2618][9] = 5;
+	AreaData[2519][9] = 5;
+	AreaData[2419][9] = 5;
+	AreaData[2320][9] = 5;
+	AreaData[2321][9] = 5;
+	AreaData[2222][9] = 5;
+	AreaData[2122][9] = 5;
+	AreaData[2123][9] = 5;
+	AreaData[2024][9] = 5;
+	AreaData[2025][9] = 5;
+	AreaData[1925][9] = 5;
+	AreaData[1826][9] = 5;
+	AreaData[1726][9] = 5;
+	AreaData[1727][9] = 5;
+	AreaData[1628][9] = 5;
 
 	//ドニエプル川
 	AreaData[4012][9] = 4;
@@ -386,7 +404,7 @@ function TikeiSmo() {
 	AreaData[1830][9] = 4;
 	AreaData[1829][9] = 4;
 	AreaData[1728][9] = 4;
-	AreaData[1628][9] = 4;
+	//AreaData[1628][9] = 4;
 
 	AreaData[2945][9] = 4;
 	AreaData[2844][9] = 4;

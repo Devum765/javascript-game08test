@@ -350,4 +350,28 @@ function Event() {
 			Game = 1;
 		}
 	}
+	if (ScenarioNum==10) {
+		if (Turn==50) {
+			alert("ソ連援軍の到着(スモレンスク)");
+			if (AreaData[1629][0]==1) {//スモレンスク
+				if (AreaData[1629][8]<=3) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1,1629,1,10,4); SovDivNum++; }
+				if (AreaData[1629][8]<=4) { Division[1][SovDivNum] = new Array("騎兵師団[8]",1,1,1,1629,1,0,7); SovDivNum++; }
+			}
+		}
+		if (Turn==100) {
+			alert("ソ連援軍の到着(ヤールツェヴォ、エリニャ、ロスラヴリ)");
+			if (AreaData[ 843][0]==1) {//ヤールツェヴォ
+				if (AreaData[ 843][8]<=3) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1, 843,1,1,4); SovDivNum++; }
+				if (AreaData[ 843][8]<=4) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1, 843,1,1,4); SovDivNum++; }
+			}
+			if (AreaData[1742][0]==1) {//エリニャ
+				if (AreaData[1742][8]<=3) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1,1742,1,1,4); SovDivNum++; }
+				if (AreaData[1742][8]<=4) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1,1742,1,1,4); SovDivNum++; }
+			}
+			if (AreaData[3239][0]==1) {//ロスラヴリ
+				if (AreaData[3239][8]<=3) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1,3239,1,1,4); SovDivNum++; }
+				if (AreaData[3239][8]<=4) { Division[1][SovDivNum] = new Array("歩兵師団[5]",1,1,1,3239,1,1,4); SovDivNum++; }
+			}
+		}
+	}
 }
